@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <input type="text" ref="input" id="input">
+        <button @click="clkConsole">submit</button>
+        <input type="text" id="interInfo">
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello'
+            },
+            methods: {
+                clkConsole() {
+                    this.$refs.input.value = 'future';
+                    console.log(this.$refs.input);
+                    console.log(document.getElementById('input'));
+                }
+            }
+        })
+
+
+        var name = 'global';
+        function foo () {
+            this.name = 'foo';
+            console.log(this)
+        }
+        var obj = {
+            name: 'local',
+            bar: foo.bind(window),
+            foo: foo
+        }
+        var baz = new obj.bar();
+        console.log(window.name);
+        console.log(baz.name);
+        obj.bar();
+        console.log(window.name);
+        obj.foo();
+        console.log(obj.name);
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
